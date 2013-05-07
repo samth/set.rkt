@@ -2,22 +2,18 @@
 
 @require[(for-syntax racket/base)
          racket/runtime-path
-         planet/scribble
          scribble/manual
          scribble/basic
          scribble/eval]
 
-@require[(for-label racket/base
-                    (this-package-in set)
-                    (this-package-in seteq))]
+@require[(for-label racket/base data/set data/seteq)]
 
 @define-runtime-path[here (build-path 'same)]
 
 @define[the-eval
         (let ([the-eval (make-base-eval)])
-          (parameterize ([current-directory here])
-            (the-eval `(require (file ,(path->string (build-path here "main.ss")))))
-            the-eval))]
+	  (the-eval `(require data/set data/seteq))
+	  the-eval)]
 
 @title[#:tag "top"]{@bold{Set}: Purely Functional Sets}
 
@@ -41,10 +37,8 @@ and @link["http://www.haskell.org/ghc/"]{GHC}'s
 
 @section[#:tag "started"]{Getting started}
 
-The easiest way to use this library is to install its main module,
-which exports all bindings in the two individual modules:
-
-@defmodule/this-package[]
+This module provides two libraries, one for @racket[equal?]-based
+sets, and one for @racket[eq?]-based sets.
 
 @examples[#:eval the-eval
           (define heroes (list->seteq '(rocky bullwinkle)))
@@ -54,7 +48,7 @@ which exports all bindings in the two individual modules:
 
 @section[#:tag "set"]{Sets using @scheme[equal?]}
 
-@defmodule/this-package[set]
+@defmodule[data/set]
 
 @defproc[(set? [x any]) boolean?]{Determines whether @scheme[x] is a set.}
 
@@ -141,7 +135,7 @@ using @scheme[equal?] to compare elements.}
 
 @section[#:tag "seteq"]{Sets using @scheme[eq?]}
 
-@defmodule/this-package[seteq]
+@defmodule[data/seteq]
 
 @defproc[(seteq? [x any]) boolean?]{Determines whether @scheme[x] is a set.}
 
