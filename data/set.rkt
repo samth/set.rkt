@@ -7,7 +7,7 @@
          set-adjoin set-add set-contains?
          subset? set=?
          for/set for*/set
-         in-set)
+         in-set (rename-out [empty-set empty]))
 
 (define (in-set set)
   (in-hash-keys (set-elts set)))
