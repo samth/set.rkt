@@ -15,7 +15,7 @@
 	  (the-eval `(require data/set data/seteq))
 	  the-eval)]
 
-@title[#:tag "top"]{@bold{Set}: Purely Functional Sets}
+@title[#:tag "top"]{Set: Purely Functional Sets}
 
 by Dave Herman (@tt{dherman at ccs dot neu dot edu})
 
